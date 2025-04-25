@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"time"
 
 	"github.com/montanaflynn/stats"
@@ -45,6 +46,8 @@ func gradient(inputData []stats.Coordinate) (gradient float64) {
 
 	gradient = numerator / denominator
 
+	gradient = math.Round(gradient*100) / 100
+
 	return gradient
 }
 
@@ -56,6 +59,8 @@ func yIntercept(inputData []stats.Coordinate) (intercept float64) {
 	xMean, yMean := varMeans(inputData)
 
 	intercept = yMean - lineGradient*xMean
+
+	intercept = math.Round(intercept*100) / 100
 
 	return intercept
 }
