@@ -25,8 +25,10 @@ All Go programs used in this test are found in the Go folder in this repository.
 - go.sum: record of the library the project depends on
 - main_test.go: tests and benchmarks the fuctions in the main.go file
 - main.go: the file to test the Anscombe quartet with the Go programming language. The stats library was used. 
+- m.exe: the executable for this project. Assembled on Windows.
 
 ## Application
+An executable for this project was created using Windows. To create your own executable, run **go build** in the same directory as the go program. For more information, see the Gopher documentation on creating an executable [here](https://go.dev/doc/tutorial/compile-install).
 
 ## Use of AI
 AI was not used for this assignment.
