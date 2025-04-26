@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math"
-	"time"
 
 	"github.com/montanaflynn/stats"
 )
@@ -46,8 +44,6 @@ func gradient(inputData []stats.Coordinate) (gradient float64) {
 
 	gradient = numerator / denominator
 
-	gradient = math.Round(gradient*100) / 100
-
 	return gradient
 }
 
@@ -60,14 +56,10 @@ func yIntercept(inputData []stats.Coordinate) (intercept float64) {
 
 	intercept = yMean - lineGradient*xMean
 
-	intercept = math.Round(intercept*100) / 100
-
 	return intercept
 }
 
 func main() {
-
-	start := time.Now()
 
 	// set the the points in the Anscombe Quartet
 	num1 := []stats.Coordinate{{10, 8.04}, {8, 6.95}, {13, 7.58}, {9, 8.81}, {11, 8.33}, {14, 9.96}, {6, 7.24}, {4, 4.26}, {12, 10.84}, {7, 4.82}, {5, 5.68}}
@@ -77,17 +69,15 @@ func main() {
 
 	//find the linear regression coefficients each dataset
 	linreg1, _ := stats.LinearRegression(num1)
-	fmt.Println(gradient(linreg1), yIntercept(linreg1))
+	fmt.Printf("gradient: %.2f, Intercept: %.2f\n", gradient(linreg1), yIntercept(linreg1))
 
 	linreg2, _ := stats.LinearRegression(num2)
-	fmt.Println(gradient(linreg2), yIntercept(linreg2))
+	fmt.Printf("gradient: %.2f, Intercept: %.2f\n", gradient(linreg2), yIntercept(linreg2))
 
 	linreg3, _ := stats.LinearRegression(num3)
-	fmt.Println(gradient(linreg3), yIntercept(linreg3))
+	fmt.Printf("gradient: %.2f, Intercept: %.2f\n", gradient(linreg3), yIntercept(linreg3))
 
 	linreg4, _ := stats.LinearRegression(num4)
-	fmt.Println(gradient(linreg4), yIntercept(linreg4))
-
-	fmt.Printf("Took %v", time.Since(start))
+	fmt.Printf("gradient: %.2f, Intercept: %.2f\n", gradient(linreg4), yIntercept(linreg4))
 
 }
